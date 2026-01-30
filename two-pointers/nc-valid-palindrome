@@ -1,0 +1,18 @@
+from string import ascii_letters, digits
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        valid = ascii_letters + digits
+ 
+        L = 0
+        R = len(s) - 1
+
+        while L < R:
+            while L < R and s[L] not in valid:
+                L += 1
+            while L < R and s[R] not in valid:
+                R -= 1
+            if s[L].lower() != s[R].lower():
+                return False
+            L += 1
+            R -= 1
+        return True
